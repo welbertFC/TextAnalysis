@@ -23,6 +23,7 @@ public class Text implements Serializable {
                 vezesQueAparece.compute(palavra, (k, v)  -> v == null ? 1 : v+1);
             }
         }
+
         return vezesQueAparece;
     }
 
