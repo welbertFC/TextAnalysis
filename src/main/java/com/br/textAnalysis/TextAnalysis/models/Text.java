@@ -3,9 +3,7 @@ package com.br.textAnalysis.TextAnalysis.models;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 @Data
 public class Text implements Serializable {
@@ -16,15 +14,16 @@ public class Text implements Serializable {
         this.text = text.toLowerCase(Locale.ROOT);
     }
 
-    public Map<String, Integer> word_frequency(){
-        Map<String,Integer> quantas = new HashMap<String,Integer>();
-        String s = "";
-        String[] aparicoes = s.split(text);
-       quantas.get(aparicoes);
-       for (String palavra : aparicoes){
-           quantas.compute(palavra, (k,v) -> v == null ? 1 : v+1);
 
-       }
-       return quantas;
+    public Map<String, Integer> aparicoes(){
+        String[] textoSeparado = text.split(" ");
+        Map<String, Integer> vezesQueAparece = new HashMap<>();
+        for (String palavra : textoSeparado){
+            if (palavra == palavra){
+                vezesQueAparece.compute(palavra, (k, v)  -> v == null ? 1 : v+1);
+            }
+        }
+        return vezesQueAparece;
     }
+
 }
